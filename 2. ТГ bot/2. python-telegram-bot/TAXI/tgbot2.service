@@ -1,0 +1,14 @@
+[Unit]
+Description=Telegram Bot
+After=network.target
+
+[Service]
+User=leo
+Group=leo
+
+WorkingDirectory=/home/leo/TZXI/TAXI/
+Environment="PYTHONPATH=/home/leo/TZXI/TAXI/"
+ExecStart=/home/leo/TZXI/TAXI/.venv/bin/python /home/leo/TZXI/TAXI/main.py
+
+[Install]
+WantedBy=multi-user.target

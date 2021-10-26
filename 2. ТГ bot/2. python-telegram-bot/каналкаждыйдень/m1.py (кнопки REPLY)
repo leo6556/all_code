@@ -1,0 +1,59 @@
+from telegram import Update
+from telegram import ReplyKeyboardMarkup
+from telegram import ReplyKeyboardRemove
+from telegram import KeyboardButton
+from telegram.ext import Updater
+from telegram.ext import MessageHandler
+from telegram.ext import Filters
+from telegram.ext import CallbackContext
+
+button = 'Помощь'
+
+def log_eror(f):
+
+    def inner(*args, **kwargs):
+        try:
+            return f(*args, **kwargs)
+        except Exception as e:
+            print(f'Ошибка: {e}')
+            raise e
+
+def button_handler(update = Update, context = CallbackContext):
+   update.message.reply_text(
+       text='а вот и помощь',
+       reply_markup=ReplyKeyboardRemove(),
+   )
+
+
+def mesh(update: Update, context: CallbackContext):
+    text = update.message.text
+    if text == button:
+        return button_handler(update=update, context=context)
+
+    markup = ReplyKeyboardMarkup(keyboard=[
+        [
+            KeyboardButton(text=button),
+        ],
+    ],
+        resize_keyboard=True,
+    )
+    update.message.reply_text(
+        text='попытка 4-ая',
+        reply_markup=markup,
+    )
+
+def main():
+
+    updater = Updater(
+        token = '1996839593:AAEYgxFoy7DOaTTOcXojsvDvmx_hPHlSJh0',
+        use_context=True,
+    )
+    updater.dispatcher.add_handler(MessageHandler(filters=Filters.all, callback=mesh))
+
+    updater.start_polling()
+    updater.idle()
+
+
+
+if __name__ == '__main__':
+    main()
