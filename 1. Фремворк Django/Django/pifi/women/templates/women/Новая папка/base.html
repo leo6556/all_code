@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <link type="text/css" href="{% static 'women/css/style.css' %}" rel="stylesheet" />
+
+</head>
+<body>
+{% block meinmenu %}
+<ul>
+{% for i in menu %}
+<li>{{i}}</li>
+{% endfor %}
+</ul>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+</body>
+</html>
