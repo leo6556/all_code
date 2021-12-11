@@ -1,0 +1,14 @@
+[Unit]
+Description=Telegram Bot
+After=network.target
+
+[Service]
+User=leo
+Group=leo
+
+WorkingDirectory=/home/leo/all_code/РАБОТА/1.Салон_красоты_kreatiff(02.12.2021)
+Environment="PYTHONPATH=/home/leo/all_code/РАБОТА/1.Салон_красоты_kreatiff(02.12.2021)/"
+ExecStart=/home/leo/all_code/РАБОТА/1.Салон_красоты_kreatiff(02.12.2021)/.venv/bin/python /home/leo/all_code/РАБОТА/1.Салон_красоты_kreatiff(02.12.2021)/main.py
+
+[Install]
+WantedBy=multi-user.target
