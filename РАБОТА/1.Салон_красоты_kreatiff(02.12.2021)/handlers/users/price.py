@@ -30,6 +30,7 @@ async def show_price(callback : types.CallbackQuery):
 
     if data == 'pri_man':
         read = await show_price_man()
+        print(read)
         text = '*Услуги маникюра* 💅🏼'
 
         for i in read:

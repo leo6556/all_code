@@ -1,0 +1,18 @@
+{% extends 'women/base.html' %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<p>Содержимое главной страницы
+<ul>
+{% if p.photo %}
+    <p><img class="img-article-left thumb" src="{{p.photo.url}}"></p>
+{% endif %}
+    {% for p in object_list %}
+    <li>
+        <h2>{{p.title}}</h2>
+        <p>{{p.content}}</p>
+    <hr>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
